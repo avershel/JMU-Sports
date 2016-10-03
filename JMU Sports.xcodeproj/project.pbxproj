@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D903EE421DA296B500E1D0D6 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D903EE411DA296B500E1D0D6 /* ThirdViewController.m */; };
+		D92D0FF81D863A1000C31621 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92D0FF71D863A1000C31621 /* SecondViewController.m */; };
 		D92D8CA81D82FD160091E38F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D92D8CA71D82FD160091E38F /* main.m */; };
 		D92D8CAB1D82FD160091E38F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D92D8CAA1D82FD160091E38F /* AppDelegate.m */; };
 		D92D8CAE1D82FD160091E38F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D92D8CAD1D82FD160091E38F /* ViewController.m */; };
@@ -15,6 +17,23 @@
 		D92D8CB61D82FD160091E38F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D92D8CB41D82FD160091E38F /* LaunchScreen.storyboard */; };
 		D92D8CC11D82FD1A0091E38F /* JMU_SportsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D92D8CC01D82FD1A0091E38F /* JMU_SportsTests.m */; };
 		D92D8CCC1D82FD1B0091E38F /* JMU_SportsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D92D8CCB1D82FD1B0091E38F /* JMU_SportsUITests.m */; };
+		D99097611D9FFD6000E1E32E /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = D99097501D9FFD6000E1E32E /* Icon-40.png */; };
+		D99097621D9FFD6000E1E32E /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D99097511D9FFD6000E1E32E /* Icon-40@2x.png */; };
+		D99097631D9FFD6000E1E32E /* Icon-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D99097521D9FFD6000E1E32E /* Icon-40@3x.png */; };
+		D99097641D9FFD6000E1E32E /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D99097531D9FFD6000E1E32E /* Icon-60@2x.png */; };
+		D99097651D9FFD6000E1E32E /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D99097541D9FFD6000E1E32E /* Icon-60@3x.png */; };
+		D99097661D9FFD6000E1E32E /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D99097551D9FFD6000E1E32E /* Icon-72.png */; };
+		D99097671D9FFD6000E1E32E /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D99097561D9FFD6000E1E32E /* Icon-72@2x.png */; };
+		D99097681D9FFD6000E1E32E /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = D99097571D9FFD6000E1E32E /* Icon-76.png */; };
+		D99097691D9FFD6000E1E32E /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D99097581D9FFD6000E1E32E /* Icon-76@2x.png */; };
+		D990976A1D9FFD6000E1E32E /* Icon-83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D99097591D9FFD6000E1E32E /* Icon-83.5@2x.png */; };
+		D990976B1D9FFD6000E1E32E /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = D990975A1D9FFD6000E1E32E /* Icon-Small-50.png */; };
+		D990976C1D9FFD6000E1E32E /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D990975B1D9FFD6000E1E32E /* Icon-Small-50@2x.png */; };
+		D990976D1D9FFD6000E1E32E /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = D990975C1D9FFD6000E1E32E /* Icon-Small.png */; };
+		D990976E1D9FFD6000E1E32E /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D990975D1D9FFD6000E1E32E /* Icon-Small@2x.png */; };
+		D990976F1D9FFD6000E1E32E /* Icon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D990975E1D9FFD6000E1E32E /* Icon-Small@3x.png */; };
+		D99097701D9FFD6000E1E32E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D990975F1D9FFD6000E1E32E /* Icon.png */; };
+		D99097711D9FFD6000E1E32E /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D99097601D9FFD6000E1E32E /* Icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +54,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D903EE401DA296B500E1D0D6 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
+		D903EE411DA296B500E1D0D6 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
+		D92D0FF61D863A1000C31621 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		D92D0FF71D863A1000C31621 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		D92D8CA31D82FD150091E38F /* JMU Sports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JMU Sports.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D92D8CA71D82FD160091E38F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D92D8CA91D82FD160091E38F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +74,23 @@
 		D92D8CC71D82FD1B0091E38F /* JMU SportsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JMU SportsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D92D8CCB1D82FD1B0091E38F /* JMU_SportsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JMU_SportsUITests.m; sourceTree = "<group>"; };
 		D92D8CCD1D82FD1B0091E38F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D99097501D9FFD6000E1E32E /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40.png"; path = "../../../jmuiOS/Assets.xcassets/AppIcon.appiconset/Icon-40.png"; sourceTree = "<group>"; };
+		D99097511D9FFD6000E1E32E /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40@2x.png"; path = "../../../jmuiOS/Assets.xcassets/AppIcon.appiconset/Icon-40@2x.png"; sourceTree = "<group>"; };
+		D99097521D9FFD6000E1E32E /* Icon-40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40@3x.png"; path = "../../../jmuiOS/Assets.xcassets/AppIcon.appiconset/Icon-40@3x.png"; sourceTree = "<group>"; };
+		D99097531D9FFD6000E1E32E /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60@2x.png"; path = "../../../jmuiOS/Assets.xcassets/AppIcon.appiconset/Icon-60@2x.png"; sourceTree = "<group>"; };
+		D99097541D9FFD6000E1E32E /* Icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60@3x.png"; path = "../../../jmuiOS/Assets.xcassets/AppIcon.appiconset/Icon-60@3x.png"; sourceTree = "<group>"; };
+		D99097551D9FFD6000E1E32E /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../../../jmuiOS/Assets.xcassets/AppIcon.appiconset/Icon-72.png"; sourceTree = "<group>"; };
+		D99097561D9FFD6000E1E32E /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "../../../jmuiOS/Assets.xcassets/AppIcon.appiconset/Icon-72@2x.png"; sourceTree = "<group>"; };
+		D99097571D9FFD6000E1E32E /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76.png"; path = "../../../jmuiOS/Assets.xcassets/AppIcon.appiconset/Icon-76.png"; sourceTree = "<group>"; };
+		D99097581D9FFD6000E1E32E /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76@2x.png"; path = "../../../jmuiOS/Assets.xcassets/AppIcon.appiconset/Icon-76@2x.png"; sourceTree = "<group>"; };
+		D99097591D9FFD6000E1E32E /* Icon-83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-83.5@2x.png"; path = "../../../jmuiOS/Assets.xcassets/AppIcon.appiconset/Icon-83.5@2x.png"; sourceTree = "<group>"; };
+		D990975A1D9FFD6000E1E32E /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "../../../jmuiOS/Assets.xcassets/AppIcon.appiconset/Icon-Small-50.png"; sourceTree = "<group>"; };
+		D990975B1D9FFD6000E1E32E /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50@2x.png"; path = "../../../jmuiOS/Assets.xcassets/AppIcon.appiconset/Icon-Small-50@2x.png"; sourceTree = "<group>"; };
+		D990975C1D9FFD6000E1E32E /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "../../../jmuiOS/Assets.xcassets/AppIcon.appiconset/Icon-Small.png"; sourceTree = "<group>"; };
+		D990975D1D9FFD6000E1E32E /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "../../../jmuiOS/Assets.xcassets/AppIcon.appiconset/Icon-Small@2x.png"; sourceTree = "<group>"; };
+		D990975E1D9FFD6000E1E32E /* Icon-Small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@3x.png"; path = "../../../jmuiOS/Assets.xcassets/AppIcon.appiconset/Icon-Small@3x.png"; sourceTree = "<group>"; };
+		D990975F1D9FFD6000E1E32E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../../../jmuiOS/Assets.xcassets/AppIcon.appiconset/Icon.png; sourceTree = "<group>"; };
+		D99097601D9FFD6000E1E32E /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../../../jmuiOS/Assets.xcassets/AppIcon.appiconset/Icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +150,10 @@
 				D92D8CB41D82FD160091E38F /* LaunchScreen.storyboard */,
 				D92D8CB71D82FD170091E38F /* Info.plist */,
 				D92D8CA61D82FD150091E38F /* Supporting Files */,
+				D92D0FF61D863A1000C31621 /* SecondViewController.h */,
+				D92D0FF71D863A1000C31621 /* SecondViewController.m */,
+				D903EE401DA296B500E1D0D6 /* ThirdViewController.h */,
+				D903EE411DA296B500E1D0D6 /* ThirdViewController.m */,
 			);
 			path = "JMU Sports";
 			sourceTree = "<group>";
@@ -117,6 +161,23 @@
 		D92D8CA61D82FD150091E38F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D99097501D9FFD6000E1E32E /* Icon-40.png */,
+				D99097511D9FFD6000E1E32E /* Icon-40@2x.png */,
+				D99097521D9FFD6000E1E32E /* Icon-40@3x.png */,
+				D99097531D9FFD6000E1E32E /* Icon-60@2x.png */,
+				D99097541D9FFD6000E1E32E /* Icon-60@3x.png */,
+				D99097551D9FFD6000E1E32E /* Icon-72.png */,
+				D99097561D9FFD6000E1E32E /* Icon-72@2x.png */,
+				D99097571D9FFD6000E1E32E /* Icon-76.png */,
+				D99097581D9FFD6000E1E32E /* Icon-76@2x.png */,
+				D99097591D9FFD6000E1E32E /* Icon-83.5@2x.png */,
+				D990975A1D9FFD6000E1E32E /* Icon-Small-50.png */,
+				D990975B1D9FFD6000E1E32E /* Icon-Small-50@2x.png */,
+				D990975C1D9FFD6000E1E32E /* Icon-Small.png */,
+				D990975D1D9FFD6000E1E32E /* Icon-Small@2x.png */,
+				D990975E1D9FFD6000E1E32E /* Icon-Small@3x.png */,
+				D990975F1D9FFD6000E1E32E /* Icon.png */,
+				D99097601D9FFD6000E1E32E /* Icon@2x.png */,
 				D92D8CA71D82FD160091E38F /* main.m */,
 			);
 			name = "Supporting Files";
@@ -202,11 +263,12 @@
 		D92D8C9B1D82FD140091E38F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Austin Vershel";
 				TargetAttributes = {
 					D92D8CA21D82FD140091E38F = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = SV6V239CMW;
 					};
 					D92D8CBB1D82FD1A0091E38F = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -243,9 +305,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D990976D1D9FFD6000E1E32E /* Icon-Small.png in Resources */,
+				D99097651D9FFD6000E1E32E /* Icon-60@3x.png in Resources */,
+				D990976B1D9FFD6000E1E32E /* Icon-Small-50.png in Resources */,
+				D99097611D9FFD6000E1E32E /* Icon-40.png in Resources */,
+				D990976E1D9FFD6000E1E32E /* Icon-Small@2x.png in Resources */,
+				D99097671D9FFD6000E1E32E /* Icon-72@2x.png in Resources */,
+				D99097661D9FFD6000E1E32E /* Icon-72.png in Resources */,
 				D92D8CB61D82FD160091E38F /* LaunchScreen.storyboard in Resources */,
 				D92D8CB31D82FD160091E38F /* Assets.xcassets in Resources */,
+				D99097711D9FFD6000E1E32E /* Icon@2x.png in Resources */,
+				D99097681D9FFD6000E1E32E /* Icon-76.png in Resources */,
+				D99097701D9FFD6000E1E32E /* Icon.png in Resources */,
+				D99097641D9FFD6000E1E32E /* Icon-60@2x.png in Resources */,
 				D92D8CB11D82FD160091E38F /* Main.storyboard in Resources */,
+				D990976F1D9FFD6000E1E32E /* Icon-Small@3x.png in Resources */,
+				D99097631D9FFD6000E1E32E /* Icon-40@3x.png in Resources */,
+				D99097691D9FFD6000E1E32E /* Icon-76@2x.png in Resources */,
+				D990976C1D9FFD6000E1E32E /* Icon-Small-50@2x.png in Resources */,
+				D990976A1D9FFD6000E1E32E /* Icon-83.5@2x.png in Resources */,
+				D99097621D9FFD6000E1E32E /* Icon-40@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +349,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D92D0FF81D863A1000C31621 /* SecondViewController.m in Sources */,
+				D903EE421DA296B500E1D0D6 /* ThirdViewController.m in Sources */,
 				D92D8CAE1D82FD160091E38F /* ViewController.m in Sources */,
 				D92D8CAB1D82FD160091E38F /* AppDelegate.m in Sources */,
 				D92D8CA81D82FD160091E38F /* main.m in Sources */,
@@ -341,8 +422,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -385,8 +468,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -413,6 +498,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = SV6V239CMW;
 				INFOPLIST_FILE = "JMU Sports/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Vershel.JMU-Sports";
@@ -424,6 +510,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = SV6V239CMW;
 				INFOPLIST_FILE = "JMU Sports/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Vershel.JMU-Sports";
@@ -496,6 +583,7 @@
 				D92D8CD21D82FD1B0091E38F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D92D8CD31D82FD1B0091E38F /* Build configuration list for PBXNativeTarget "JMU SportsTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +592,7 @@
 				D92D8CD51D82FD1B0091E38F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D92D8CD61D82FD1B0091E38F /* Build configuration list for PBXNativeTarget "JMU SportsUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +601,7 @@
 				D92D8CD81D82FD1B0091E38F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

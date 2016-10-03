@@ -8,13 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface SecondViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (copy, nonatomic) NSMutableArray *people;
+@property (copy, nonatomic) NSMutableArray *fball;
+
 @property (strong, nonatomic) UIAlertView *av;
 @property (strong, nonatomic) NSUserDefaults* defaults;
-
+@property NSInteger index;
 @property (weak, nonatomic) IBOutlet UITableView *tv;
+@property int schedindex;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *roster;
 
+@property (weak, nonatomic) IBOutlet UINavigationBar *nav;
+@property (weak, nonatomic) IBOutlet UINavigationItem *titlebar;
 
 @end
 
