@@ -442,6 +442,15 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
 //        NSLog(@"%lu", fball.count);
 //        
 //        }
+        
+        
+        
+        
+        
+        
+        
+        
+        //stops here
 //        default_dgrd_header roster_dgrd_header
         
 
@@ -511,15 +520,26 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
 //    }
     NSDictionary *rowData = self.people[indexPath.row];
     
-    CGRect nameValueRectangle = CGRectMake(20, 15, 250, 30);
+    CGRect colorRectangle = CGRectMake(0, 1, [UIScreen mainScreen].bounds.size.width, 45);
+    UILabel* _colorRectangle = [[UILabel alloc] initWithFrame:colorRectangle];
+//    _colorRectangle.text = rowData[@"Name"];
+    _colorRectangle.font = [UIFont systemFontOfSize:20];
+    _colorRectangle.backgroundColor = [UIColor colorWithRed:237.0f/255.0f green:228/255.0f blue:194.0f/255.0f
+                                                 alpha:1.0f];;
+    [cell.contentView addSubview:_colorRectangle];
+    
+    
+    CGRect nameValueRectangle = CGRectMake(20, 10, 250, 30);
     UILabel* _nameValue = [[UILabel alloc] initWithFrame:nameValueRectangle];
     _nameValue.text = rowData[@"Name"];
     _nameValue.font = [UIFont systemFontOfSize:20];
+//    _nameValue.backgroundColor = [UIColor colorWithRed:237.0f/255.0f green:228/255.0f blue:194.0f/255.0f
+//                                                                                 alpha:1.0f];;
     [cell.contentView addSubview:_nameValue];
     
     
     
-    CGRect nextarrow = CGRectMake(340, 40, 20, 30);
+    CGRect nextarrow = CGRectMake(340, 10, 20, 30);
     UILabel* _nextValue = [[UILabel alloc] initWithFrame:nextarrow];
     _nextValue.text = @">";
     _nextValue.font = [UIFont systemFontOfSize:20];
@@ -550,7 +570,7 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
     UILabel* row = [[UILabel alloc] initWithFrame:rowrect];
 //    NSLog(@"%@",rowData[@"Schedule"][0][@"Name"]);
     if (!check){
-    row.text = @"NO NEXT GAME FOUND";
+    row.text = @"Not in Season.";
     }
     else{
     row.text = [NSString stringWithFormat:@"%@ %@", rowData[@"Schedule"][i][@"Date"],rowData[@"Schedule"][i][@"Name"]];
@@ -693,6 +713,10 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
         SecondViewController *destViewController = segue.destinationViewController;
         destViewController.people = _people;
         destViewController.index = indexPath.row;
+        
+//        UIView.setAnimationsEnabled(false)
+//        self.nav.prompt = nil;
+//        self.setAnimationsEnabled(true)
     }
 }
 

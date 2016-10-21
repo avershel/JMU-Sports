@@ -224,6 +224,10 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
     
    
 }
+- (IBAction)backpressed:(id)sender {
+          [self performSegueWithIdentifier:@"thirdtosecond" sender:self];
+}
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 //    if ([segue.identifier isEqualToString:@"maintosecond"]) {

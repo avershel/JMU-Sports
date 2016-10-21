@@ -7,6 +7,8 @@
 //
 
 #import "SecondViewController.h"
+#import "ThirdViewController.h"
+
 #import <QuartzCore/QuartzCore.h>
 
 @implementation SecondViewController
@@ -78,7 +80,7 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
         NSString *webdata = [NSString stringWithContentsOfURL:url];
         //        NSString *html = [url absoluteString];
         
-        NSArray *body = [webdata componentsSeparatedByString:@"schedule_game schedule_game_home"];
+        NSArray *body = [webdata componentsSeparatedByString:@"schedule_game schedule_game_"];
                 NSLog(@"%@",body);
         //getdate
         for(int i = 1; i < body.count; i++){
@@ -90,7 +92,12 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
             NSArray *datewithday = [date1[0] componentsSeparatedByString:@","];
             NSString *date =  [datewithday[1] stringByTrimmingCharactersInSet:
                                [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-            
+            if ([date rangeOfString:@"-"].location == NSNotFound) {
+                //                    NSLog(@"string does not contain bla");
+            } else {
+                NSLog(@"string contains bla!");
+                date = [date substringToIndex:date.length - 5];
+            }
             //getopponent
             NSArray *oppsplit = [body[i] componentsSeparatedByString:@"schedule_game_opponent_name"];
             NSString *oppStr = [oppsplit[1] substringFromIndex:2];
@@ -106,40 +113,75 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
             //            [dateFormat setDateFormat:@"EE, LLL d"];
             //            NSDate *converteddate = [dateFormat dateFromString:date];
             //            NSLog(@"%@", converteddate);
+            if ([opp  isEqual: @""]){
+                
+                NSArray *datesplit = [body[i] componentsSeparatedByString:@"schedule_game_opponent_date"];
+                NSString *dateStr = [datesplit[1] substringFromIndex:2];
+                NSArray *date1 = [dateStr componentsSeparatedByString:@"</div>"];
+                NSArray *datewithday = [date1[0] componentsSeparatedByString:@","];
+                NSString *date =  [datewithday[1] stringByTrimmingCharactersInSet:
+                                   [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                
+                if ([date rangeOfString:@"-"].location == NSNotFound) {
+//                    NSLog(@"string does not contain bla");
+                } else {
+                    NSLog(@"string contains bla!");
+                    date = [date substringToIndex:date.length - 5];
+                }
+                
+                //getopponent
+                NSArray *oppsplit = [body[i] componentsSeparatedByString:@"schedule_game_opponent_name"];
+                NSString *oppStr = [oppsplit[1] substringFromIndex:2];
+                //        NSLog(@"%@", oppStr);
+                NSArray *opp1 = [oppStr componentsSeparatedByString:@">"];
+                
+                NSArray *opp2 = [opp1[1] componentsSeparatedByString:@"<"];
+                NSString *opp =  [opp2[0] stringByTrimmingCharactersInSet:
+                                  [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                
+                opp = [NSString stringWithFormat:@"@ %@", opp];
+                //        NSLog(@"%@ %@",date, opp);
+                
+                [fball addObject:@{@"Name": opp, @"Date": date}];
+                
+                
+                
+
+            }else{
             opp = [NSString stringWithFormat:@"vs. %@", opp];
             NSLog(@"!!!!!%@ %@",date, opp);
             [fball addObject:@{@"Name": opp, @"Date": date}];
-            
-            
-        }
-        body = [webdata componentsSeparatedByString:@"schedule_game schedule_game_away"];
-        //        NSLog(@"%@",bodystring);
-        //getdate
-        for(int i = 1; i < body.count; i++){
-            NSArray *datesplit = [body[i] componentsSeparatedByString:@"schedule_game_opponent_date"];
-            NSString *dateStr = [datesplit[1] substringFromIndex:2];
-            NSArray *date1 = [dateStr componentsSeparatedByString:@"</div>"];
-            NSArray *datewithday = [date1[0] componentsSeparatedByString:@","];
-            NSString *date =  [datewithday[1] stringByTrimmingCharactersInSet:
-                               [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-            
-            //getopponent
-            NSArray *oppsplit = [body[i] componentsSeparatedByString:@"schedule_game_opponent_name"];
-            NSString *oppStr = [oppsplit[1] substringFromIndex:2];
-            //        NSLog(@"%@", oppStr);
-            NSArray *opp1 = [oppStr componentsSeparatedByString:@">"];
-            
-            NSArray *opp2 = [opp1[1] componentsSeparatedByString:@"<"];
-            NSString *opp =  [opp2[0] stringByTrimmingCharactersInSet:
-                              [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-            
-            opp = [NSString stringWithFormat:@"!!!!!!@ %@", opp];
-            //        NSLog(@"%@ %@",date, opp);
-            
-            [fball addObject:@{@"Name": opp, @"Date": date}];
+            }
             
         }
-        
+//        body = [webdata componentsSeparatedByString:@"schedule_game schedule_game_away"];
+//        //        NSLog(@"%@",bodystring);
+//        //getdate
+//        for(int i = 1; i < body.count; i++){
+//            NSArray *datesplit = [body[i] componentsSeparatedByString:@"schedule_game_opponent_date"];
+//            NSString *dateStr = [datesplit[1] substringFromIndex:2];
+//            NSArray *date1 = [dateStr componentsSeparatedByString:@"</div>"];
+//            NSArray *datewithday = [date1[0] componentsSeparatedByString:@","];
+//            NSString *date =  [datewithday[1] stringByTrimmingCharactersInSet:
+//                               [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+//            
+//            //getopponent
+//            NSArray *oppsplit = [body[i] componentsSeparatedByString:@"schedule_game_opponent_name"];
+//            NSString *oppStr = [oppsplit[1] substringFromIndex:2];
+//            //        NSLog(@"%@", oppStr);
+//            NSArray *opp1 = [oppStr componentsSeparatedByString:@">"];
+//            
+//            NSArray *opp2 = [opp1[1] componentsSeparatedByString:@"<"];
+//            NSString *opp =  [opp2[0] stringByTrimmingCharactersInSet:
+//                              [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+//            
+//            opp = [NSString stringWithFormat:@"!!!!!!@ %@", opp];
+//            //        NSLog(@"%@ %@",date, opp);
+//            
+//            [fball addObject:@{@"Name": opp, @"Date": date}];
+//            
+//        }
+    
 //        NSLog(@"%lu", fball.count);
     
 //    }
@@ -149,24 +191,31 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
     
     int i = 0;
      check = false;
-//    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0];
-//    
-//    while (i < [rowData[@"Schedule"] count]){
-//        NSDateFormatter* myFormatter = [[NSDateFormatter alloc] init];
-//        [myFormatter setDateFormat:@"MM/dd/yyyy"];
-//        NSDate* myDate = [myFormatter dateFromString:rowData[@"Schedule"][i][@"Date"]];
-//        //        NSLog(@"%@", myDate);
-//        if([myDate compare: date] == NSOrderedDescending) // if start is later in time than end
-//        {
-//            check = true;
-//            schedindex = i;
-//
-//            break;
-//        }
-//        i++;
-//        
-//        
-//    }
+    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSLog(@"%lu", (unsigned long)fball.count);
+    NSDateFormatter* myFormatter = [[NSDateFormatter alloc] init];
+    [myFormatter setDateFormat:@"MM dd"];
+    NSString *newDate = [myFormatter stringFromDate:date];
+    date = [myFormatter dateFromString:newDate];
+//    NSLog(@"%@", fball[i][@"Date"]);
+
+    while (i < [fball count]){
+        NSDateFormatter* myFormatter = [[NSDateFormatter alloc] init];
+        [myFormatter setDateFormat:@"MM dd"];
+        NSDate* myDate = [myFormatter dateFromString:fball[i][@"Date"]];
+                NSLog(@"%@", fball[i][@"Date"]);
+//        mydate.
+        if([myDate compare: date] == NSOrderedDescending) // if start is later in time than end
+        {
+            check = true;
+            schedindex = i;
+
+            break;
+        }
+        i++;
+        
+        
+    }
     
 //    schedindex = 0;
     
@@ -187,6 +236,8 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
 -(void) viewDidAppear:(BOOL)animated{
     [tv reloadData];
                     [self.tv selectRowAtIndexPath:[NSIndexPath indexPathForRow:schedindex inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+       [self.tv scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:schedindex inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+
 }
 
 
@@ -241,8 +292,9 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
 }
 
 
+
 - (IBAction)rosterclicked:(id)sender {
-      [self performSegueWithIdentifier:@"secondtothird" sender:self];
+          [self performSegueWithIdentifier:@"secondtothird" sender:self];
 }
 
 
@@ -255,16 +307,128 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     [self.tv selectRowAtIndexPath:[NSIndexPath indexPathForRow:schedindex inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+//    NSIndexPath *offsetIndexPath = [NSIndexPath indexPathWithIndex:(NSInteger)schedindex];
+ 
 }
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"secondtothird"]) {
         NSIndexPath *indexPath = [self.tv indexPathForSelectedRow];
-        SecondViewController *destViewController = segue.destinationViewController;
-        destViewController.people = _people;
+        ThirdViewController *destViewController = segue.destinationViewController;
+        destViewController.people = self.people;
         destViewController.index = index;
     }
 }
+
+//- (NSDate*)getDateFromSched:(NSArray *)sched
+//{
+//    //CHECK FIRST DATE FROM HOME GAME & AWAY GAME
+//    NSLog(@"%@", sched);
+//    NSArray *mo = [sched[0][@"Date"] componentsSeparatedByString:@" "];
+//    //    NSString *firstmonth = mo[1];
+//    
+//    int firstmonth = 99;
+//    
+//    
+//    for (int i = 0; i < sched.count; i++) {
+//        if([sched[i][@"Name"] rangeOfString:@"vs."].location == NSNotFound){
+//            if([mo[0]  isEqual: @"Jan"]){
+//                firstmonth = 1;
+//            } else if([mo[0]  isEqual: @"Feb"]){
+//                firstmonth = 2;
+//            }
+//            else if([mo[0]  isEqual: @"Mar"]){
+//                firstmonth = 3;
+//            }
+//            else if([mo[0]  isEqual: @"Apr"]){
+//                firstmonth = 4;
+//            }
+//            else if([mo[0]  isEqual: @"May"]){
+//                firstmonth = 5;
+//            }
+//            else if([mo[0]  isEqual: @"Jun"]){
+//                firstmonth = 6;
+//            }
+//            else if([mo[0]  isEqual: @"Jul"]){
+//                firstmonth = 7;
+//            }
+//            else if([mo[0]  isEqual: @"Aug"]){
+//                firstmonth = 8;
+//            }
+//            else if([mo[0]  isEqual: @"Sep"]){
+//                firstmonth = 9;
+//            }
+//            else if([mo[0]  isEqual: @"Oct"]){
+//                firstmonth = 10;
+//            }
+//            else if([mo[0]  isEqual: @"Nov"]){
+//                firstmonth = 11;
+//            }
+//            else if([mo[0]  isEqual: @"Dec"]){
+//                firstmonth = 12;
+//            }
+//        }
+//    }
+//    
+//    
+//    for (int i = 0; i < sched.count; i++) {
+//        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//        [formatter setDateFormat:@"yyyy"];
+//        NSString *yearString = [formatter stringFromDate:[NSDate date]];
+//        int year = [yearString intValue];
+//        
+//        NSArray *mo = [sched[i][@"Date"] componentsSeparatedByString:@" "];
+//        NSString *day = mo[1];
+//        int moval = 0;
+//        if([mo[0]  isEqual: @"Jan"]){
+//            moval = 1;
+//        } else if([mo[0]  isEqual: @"Feb"]){
+//            moval = 2;
+//        }
+//        else if([mo[0]  isEqual: @"Mar"]){
+//            moval = 3;
+//        }
+//        else if([mo[0]  isEqual: @"Apr"]){
+//            moval = 4;
+//        }
+//        else if([mo[0]  isEqual: @"May"]){
+//            moval = 5;
+//        }
+//        else if([mo[0]  isEqual: @"Jun"]){
+//            moval = 6;
+//        }
+//        else if([mo[0]  isEqual: @"Jul"]){
+//            moval = 7;
+//        }
+//        else if([mo[0]  isEqual: @"Aug"]){
+//            moval = 8;
+//        }
+//        else if([mo[0]  isEqual: @"Sep"]){
+//            moval = 9;
+//        }
+//        else if([mo[0]  isEqual: @"Oct"]){
+//            moval = 10;
+//        }
+//        else if([mo[0]  isEqual: @"Nov"]){
+//            moval = 11;
+//        }
+//        else if([mo[0]  isEqual: @"Dec"]){
+//            moval = 12;
+//        }
+//        
+//        if (moval < firstmonth)
+//        {
+//            
+//            year += 1;
+//        }
+//        
+//        NSLog(@"%@ %@ %@", day, mo[0], [NSString stringWithFormat:@"%i", year]);
+//        
+//        
+//    }
+//    
+//    return [NSDate new];
+//}
 
 @end
