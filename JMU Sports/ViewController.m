@@ -22,6 +22,11 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
     [super viewDidLoad];
     defaults = [NSUserDefaults standardUserDefaults];
     if (!_people) {
+//        
+//       NSURL *url = [NSURL URLWithString:@"http://www.prettygoodsports.com/api.php"];
+//    
+//    NSString *webdata = [NSString stringWithContentsOfURL:url];
+//        NSLog(@"%@", webdata);
         
         
         //Create emptyArray of Sports, Schedules, Rostres
@@ -313,7 +318,7 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
                 
                 //                       if(dsplitarray.count > 2){
                 //                           row2.numberOfLines = 0;
-                row2.text = [NSString stringWithFormat:@"\tN/A"];
+                row2.text = [NSString stringWithFormat:@"\tNot"];
                 //                       }
                 
                 row2.font = [UIFont systemFontOfSize:15];
@@ -375,7 +380,7 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
         UILabel* blocklab1 = [[UILabel alloc] initWithFrame:blocker];
         blocklab1.text = @"";
         blocklab1.font = [UIFont systemFontOfSize:20];
-        blocklab1.backgroundColor = [UIColor blackColor];
+        blocklab1.backgroundColor = [UIColor purpleColor];
         [cell.contentView addSubview:blocklab1];
             }
             
@@ -418,14 +423,14 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
                    
                    
                    
-                   CGRect rowrect2 = CGRectMake(138, 55, 180, 60);
+                   CGRect rowrect2 = CGRectMake(148, 55, 180, 60);
                    UILabel* row2 = [[UILabel alloc] initWithFrame:rowrect2];
                    //    NSLog(@"%@",rowData[@"Schedule"][0][@"Name"]);
 
                 
                            //                       if(dsplitarray.count > 2){
                            //                           row2.numberOfLines = 0;
-                   row2.text = [NSString stringWithFormat:@"\tN/A"];
+                   row2.text = [NSString stringWithFormat:@"\tIn"];
                            //                       }
                    
                        row2.font = [UIFont systemFontOfSize:15];
@@ -490,7 +495,7 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
                 UILabel* blocklab1 = [[UILabel alloc] initWithFrame:blocker];
                 blocklab1.text = @"";
                 blocklab1.font = [UIFont systemFontOfSize:20];
-                blocklab1.backgroundColor = [UIColor blackColor];
+                blocklab1.backgroundColor = [UIColor purpleColor];
                 [cell.contentView addSubview:blocklab1];
             }
 
@@ -541,7 +546,7 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
                    
                    //                       if(dsplitarray.count > 2){
                    //                           row2.numberOfLines = 0;
-                   row2.text = [NSString stringWithFormat:@"\tN/A"];
+                   row2.text = [NSString stringWithFormat:@"\tSeason"];
                    //                       }
                    
                    row2.font = [UIFont systemFontOfSize:15];
@@ -696,25 +701,97 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
 
 - (void)getStaticSched
 {
+    
+    NSURL *url = [NSURL URLWithString:@"http://www.prettygoodsports.com/api.php"];
+    
+    NSString *webdata = [NSString stringWithContentsOfURL:url];
+    NSArray *rawExhibits = (NSArray *)[NSJSONSerialization JSONObjectWithData:[webdata dataUsingEncoding:NSUTF8StringEncoding] options:0 error:NULL];
+
     NSMutableArray *mFootball = [NSMutableArray new];
+    NSMutableArray *mBasketball = [NSMutableArray new];
+    NSMutableArray *wBasketball = [NSMutableArray new];
+    NSMutableArray *mSoccer = [NSMutableArray new];
+    NSMutableArray *wSoccer = [NSMutableArray new];
+    NSMutableArray *mGolf = [NSMutableArray new];
+    NSMutableArray *wGolf = [NSMutableArray new];
+    NSMutableArray *mTennis = [NSMutableArray new];
+    NSMutableArray *wTennis = [NSMutableArray new];
+    NSMutableArray *wFockey = [NSMutableArray new];
+    NSMutableArray *mBaseball = [NSMutableArray new];
+    NSMutableArray *wSoftball = [NSMutableArray new];
+    NSMutableArray *wLax = [NSMutableArray new];
+    NSMutableArray *wCC = [NSMutableArray new];
+    NSMutableArray *wSwim = [NSMutableArray new];
+    NSMutableArray *wTrack = [NSMutableArray new];
+    NSMutableArray *wVolleyball = [NSMutableArray new];
+
+    for(int i = 0; i < rawExhibits.count; i++){
+        if ([rawExhibits[i][@"Name"]  isEqual: @"football"]) {
+            [mFootball addObject:@{@"Name": rawExhibits[i][@"Opp"], @"Date": rawExhibits[i][@"Date"]}];
+
+        }
+        else if ([rawExhibits[i][@"Name"]  isEqual: @"mbasketball"]) {
+            [mBasketball addObject:@{@"Name": rawExhibits[i][@"Opp"], @"Date": rawExhibits[i][@"Date"]}];
+            
+        }        else if ([rawExhibits[i][@"Name"]  isEqual: @"wbasketball"]) {
+            [wBasketball addObject:@{@"Name": rawExhibits[i][@"Opp"], @"Date": rawExhibits[i][@"Date"]}];
+            
+        }        else if ([rawExhibits[i][@"Name"]  isEqual: @"msoccer"]) {
+            [mSoccer addObject:@{@"Name": rawExhibits[i][@"Opp"], @"Date": rawExhibits[i][@"Date"]}];
+            
+        }        else if ([rawExhibits[i][@"Name"]  isEqual: @"wsoccer"]) {
+            [wSoccer addObject:@{@"Name": rawExhibits[i][@"Opp"], @"Date": rawExhibits[i][@"Date"]}];
+            
+        }        else if ([rawExhibits[i][@"Name"]  isEqual: @"mgolf"]) {
+            [mGolf addObject:@{@"Name": rawExhibits[i][@"Opp"], @"Date": rawExhibits[i][@"Date"]}];
+            
+        }        else if ([rawExhibits[i][@"Name"]  isEqual: @"wgolf"]) {
+            [wGolf addObject:@{@"Name": rawExhibits[i][@"Opp"], @"Date": rawExhibits[i][@"Date"]}];
+            
+        }        else if ([rawExhibits[i][@"Name"]  isEqual: @"mtennis"]) {
+            [mTennis addObject:@{@"Name": rawExhibits[i][@"Opp"], @"Date": rawExhibits[i][@"Date"]}];
+            
+        }        else if ([rawExhibits[i][@"Name"]  isEqual: @"wtennis"]) {
+            [wTennis addObject:@{@"Name": rawExhibits[i][@"Opp"], @"Date": rawExhibits[i][@"Date"]}];
+            
+        }        else if ([rawExhibits[i][@"Name"]  isEqual: @"wfockey"]) {
+            [wFockey addObject:@{@"Name": rawExhibits[i][@"Opp"], @"Date": rawExhibits[i][@"Date"]}];
+            
+        }        else if ([rawExhibits[i][@"Name"]  isEqual: @"mbaseball"]) {
+            [mBaseball addObject:@{@"Name": rawExhibits[i][@"Opp"], @"Date": rawExhibits[i][@"Date"]}];
+            
+        }        else if ([rawExhibits[i][@"Name"]  isEqual: @"wsoftball"]) {
+            [wSoftball addObject:@{@"Name": rawExhibits[i][@"Opp"], @"Date": rawExhibits[i][@"Date"]}];
+            
+        }        else if ([rawExhibits[i][@"Name"]  isEqual: @"wlax"]) {
+            [wLax addObject:@{@"Name": rawExhibits[i][@"Opp"], @"Date": rawExhibits[i][@"Date"]}];
+            
+        }        else if ([rawExhibits[i][@"Name"]  isEqual: @"wswim"]) {
+            [wSwim addObject:@{@"Name": rawExhibits[i][@"Opp"], @"Date": rawExhibits[i][@"Date"]}];
+            
+        }        else if ([rawExhibits[i][@"Name"]  isEqual: @"wcc"]) {
+            [wCC addObject:@{@"Name": rawExhibits[i][@"Opp"], @"Date": rawExhibits[i][@"Date"]}];
+            
+        }        else if ([rawExhibits[i][@"Name"]  isEqual: @"wtrack"]) {
+            [wTrack addObject:@{@"Name": rawExhibits[i][@"Opp"], @"Date": rawExhibits[i][@"Date"]}];
+            
+        }        else if ([rawExhibits[i][@"Name"]  isEqual: @"wvolleyball"]) {
+            [wVolleyball addObject:@{@"Name": rawExhibits[i][@"Opp"], @"Date": rawExhibits[i][@"Date"]}];
+            
+        }
+
+    }
+    
+    
+//    NSMutableArray *mFootball = [NSMutableArray new];
     //        [sports addObject:mFootball];
-    [mFootball addObject:@{@"Name": @"vs. Morehead St.", @"Date": @"9/3/2016"}];
-    [mFootball addObject:@{@"Name": @"vs. C. Conn. St.", @"Date": @"9/10/2016"}];
-    [mFootball addObject:@{@"Name": @"@ North Carolina", @"Date": @"9/17/2016"}];
-    [mFootball addObject:@{@"Name": @"@ Maine", @"Date": @"9/24/2016"}];
-    [mFootball addObject:@{@"Name": @"vs. Delaware", @"Date": @"10/1/2016"}];
-    [mFootball addObject:@{@"Name": @"vs. William & Mary", @"Date": @"10/8/2016"}];
-    [mFootball addObject:@{@"Name": @"@ New Hampshire", @"Date": @"10/15/2016"}];
-    [mFootball addObject:@{@"Name": @"vs. Rhode Island", @"Date": @"10/29/2016"}];
-    [mFootball addObject:@{@"Name": @"@ Richmond", @"Date": @"11/5/2016"}];
-    [mFootball addObject:@{@"Name": @"@ Villanova", @"Date": @"11/12/2016"}];
-    [mFootball addObject:@{@"Name": @"vs. Elon", @"Date": @"11/19/2017"}];
+
     [_people addObject:@{@"Name": @"Men's Football",
                          @"Schedule": mFootball
                          }];
     
     
-    NSMutableArray *mBasketball = [NSMutableArray new];
+//    NSMutableArray *mBasketball = [NSMutableArray new];
     //        [sports addObject:mBasketball];
     
     [mBasketball addObject:@{@"Name": @"@ Old Dominion", @"Date": @"11/11/2016"}];
@@ -753,7 +830,7 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
                          }];
     
     
-    NSMutableArray *wBasketball = [NSMutableArray new];
+//    NSMutableArray *wBasketball = [NSMutableArray new];
     //        [sports addObject:wBasketball];
     
     [wBasketball addObject:@{@"Name": @"vs. Glenville St.", @"Date": @"11/6/2016"}];
@@ -786,7 +863,7 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
     [_people addObject:@{@"Name": @"Women's Basketball", @"Schedule": wBasketball}];
     
     
-    NSMutableArray *mSoccer = [NSMutableArray new];
+//    NSMutableArray *mSoccer = [NSMutableArray new];
     [mSoccer addObject:@{@"Name": @"vs. Lehigh", @"Date": @"8/26/2016"}];
     [mSoccer addObject:@{@"Name": @"vs. N.C. State", @"Date": @"8/28/2016"}];
     [mSoccer addObject:@{@"Name": @"@ Penn State", @"Date": @"9/2/2016"}];
@@ -807,7 +884,7 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
     [_people addObject:@{@"Name": @"Men's Soccer", @"Schedule": mSoccer}];
     
     
-    NSMutableArray *wSoccer = [NSMutableArray new];
+//    NSMutableArray *wSoccer = [NSMutableArray new];
     [wSoccer addObject:@{@"Name": @"vs. Arkansas", @"Date": @"8/19/2016"}];
     [wSoccer addObject:@{@"Name": @"vs. Northwestern", @"Date": @"8/21/2016"}];
     [wSoccer addObject:@{@"Name": @"@ Richmond", @"Date": @"8/26/2016"}];
@@ -829,7 +906,7 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
     [_people addObject:@{@"Name": @"Women's Soccer", @"Schedule": wSoccer}];
     
     
-    NSMutableArray *mGolf = [NSMutableArray new];
+//    NSMutableArray *mGolf = [NSMutableArray new];
     [mGolf addObject:@{@"Name": @"@ True Blue GC", @"Date": @"9/11/2016"}];
     [mGolf addObject:@{@"Name": @"@ Country Club of VA", @"Date": @"9/19/2016"}];
     [mGolf addObject:@{@"Name": @"@ Spirit Hollow GC", @"Date": @"9/30/2016"}];
@@ -843,7 +920,7 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
     [_people addObject:@{@"Name": @"Men's Golf", @"Schedule": mGolf}];
     
     
-    NSMutableArray *wGolf = [NSMutableArray new];
+//    NSMutableArray *wGolf = [NSMutableArray new];
     [wGolf addObject:@{@"Name": @"@ Caledonia GC", @"Date": @"9/11/2016"}];
     [wGolf addObject:@{@"Name": @"@ Red Sky GC", @"Date": @"9/26/2016"}];
     [wGolf addObject:@{@"Name": @"@ Pinehurst No. 1", @"Date": @"10/10/2016"}];
@@ -857,7 +934,7 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
     [_people addObject:@{@"Name": @"Women's Golf", @"Schedule": wGolf}];
     
     
-    NSMutableArray *mTennis = [NSMutableArray new];
+//    NSMutableArray *mTennis = [NSMutableArray new];
     [mTennis addObject:@{@"Name": @"@ Wilmington, N.C.", @"Date": @"9/9/2016"}];
     [mTennis addObject:@{@"Name": @"@ Greenville, N.C.", @"Date": @"9/16/2016"}];
     [mTennis addObject:@{@"Name": @"@ Elon, N.C.", @"Date": @"9/23/2016"}];
@@ -866,7 +943,7 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
     [_people addObject:@{@"Name": @"Men's Tennis", @"Schedule": mTennis}];
     
     
-    NSMutableArray *wTennis = [NSMutableArray new];
+//    NSMutableArray *wTennis = [NSMutableArray new];
     [wTennis addObject:@{@"Name": @"@ College Park, MD.", @"Date": @"9/16/2016"}];
     [wTennis addObject:@{@"Name": @"@ Charlottesville, VA.", @"Date": @"9/23/2016"}];
     [wTennis addObject:@{@"Name": @"@ Norfolk, VA.", @"Date": @"10/14/2016"}];
@@ -874,7 +951,7 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
     [_people addObject:@{@"Name": @"Women's Tennis", @"Schedule": wTennis}];
     
     
-    NSMutableArray *wFockey = [NSMutableArray new];
+//    NSMutableArray *wFockey = [NSMutableArray new];
     [wFockey addObject:@{@"Name": @"vs. Liberty", @"Date": @"8/26/2016"}];
     [wFockey addObject:@{@"Name": @"vs. Longwood", @"Date": @"8/30/2016"}];
     [wFockey addObject:@{@"Name": @"vs. Appalachian St.", @"Date": @"9/2/2016"}];
@@ -896,11 +973,11 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
     [_people addObject:@{@"Name": @"Women's Field Hockey", @"Schedule": wFockey}];
     
     
-    NSMutableArray *mBaseball = [NSMutableArray new];
+//    NSMutableArray *mBaseball = [NSMutableArray new];
     [_people addObject:@{@"Name": @"Men's Baseball", @"Schedule": mBaseball}];
     
     
-    NSMutableArray *wSoftball = [NSMutableArray new];
+//    NSMutableArray *wSoftball = [NSMutableArray new];
     [wSoftball addObject:@{@"Name": @"@ Farmville, VA.", @"Date": @"9/24/2016"}];
     [wSoftball addObject:@{@"Name": @"vs. WV Wesleyan", @"Date": @"9/25/2016"}];
     [wSoftball addObject:@{@"Name": @"vs. Virginia", @"Date": @"10/2/2016"}];
@@ -908,11 +985,11 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
     [wSoftball addObject:@{@"Name": @"vs. Louisburg", @"Date": @"10/9/2016"}];
     [_people addObject:@{@"Name": @"Women's Softball", @"Schedule": wSoftball}];
     
-    NSMutableArray *wLax = [NSMutableArray new];
+//    NSMutableArray *wLax = [NSMutableArray new];
     //        [wLax addObject:@{@"Name": @"@ Farmville, VA.", @"Date": @"9/24/2016"}];
     [_people addObject:@{@"Name": @"Women's Lacrosse", @"Schedule": wLax}];
     
-    NSMutableArray *wSwim = [NSMutableArray new];
+//    NSMutableArray *wSwim = [NSMutableArray new];
     [wSwim addObject:@{@"Name": @"vs. Liberty", @"Date": @"10/15/2016"}];
     [wSwim addObject:@{@"Name": @"@ Boston, Mass.", @"Date": @"10/22/2016"}];
     [wSwim addObject:@{@"Name": @"vs. CAA POD Meet", @"Date": @"11/5/2016"}];
@@ -924,7 +1001,7 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
     [wSwim addObject:@{@"Name": @"vs. JMU Diving Invitational", @"Date": @"2/4/2017"}];
     [_people addObject:@{@"Name": @"Women's Swim + Dive", @"Schedule": wSwim}];
     
-    NSMutableArray *wCC = [NSMutableArray new];
+//    NSMutableArray *wCC = [NSMutableArray new];
     [wCC addObject:@{@"Name": @"@ Viginia", @"Date": @"9/1/2016"}];
     [wCC addObject:@{@"Name": @"@ New Market, VA.", @"Date": @"9/10/2016"}];
     [wCC addObject:@{@"Name": @"@ Lehigh", @"Date": @"10/1/2016"}];
@@ -932,7 +1009,7 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
     [_people addObject:@{@"Name": @"Women's Cross Country", @"Schedule": wCC}];
     
     
-    NSMutableArray *wTrack = [NSMutableArray new];
+//    NSMutableArray *wTrack = [NSMutableArray new];
     [wTrack addObject:@{@"Name": @"@ George Mason", @"Date": @"1/9/2017"}];
     [wTrack addObject:@{@"Name": @"@ Kentucky", @"Date": @"1/15/2017"}];
     [wTrack addObject:@{@"Name": @"@ Marshall", @"Date": @"1/29/2017"}];
@@ -958,7 +1035,7 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
     
     [_people addObject:@{@"Name": @"Women's Track + Field", @"Schedule": wTrack}];
     
-    NSMutableArray *wVolleyball = [NSMutableArray new];
+//    NSMutableArray *wVolleyball = [NSMutableArray new];
     [wVolleyball addObject:@{@"Name": @"@ Harrisonburg, VA.", @"Date": @"8/26/2016"}];
     [wVolleyball addObject:@{@"Name": @"@ Ithica, N.Y.", @"Date": @"9/2/2016"}];
     [wVolleyball addObject:@{@"Name": @"@ Fairfield, Conn.", @"Date": @"9/9/2016"}];

@@ -21,187 +21,23 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
     [super viewDidLoad];
     NSDictionary *rowData = self.people[index];
     titlebar.title = rowData[@"Name"];
-    fball = [NSMutableArray new];
+    fball = rowData[@"Schedule"];
 
-    
-    
-//    for(int i = 0; i<_people.count; i++){
-        NSURL *url;
-        bool check = false;
-    NSLog(@"%@",rowData[@"Name"]);
-        if([rowData[@"Name"]  isEqual: @"Men's Football"]){
-            url = [NSURL URLWithString:@"http://www.jmusports.com/schedule.aspx?path=football"];
-        } else if([rowData[@"Name"]  isEqual: @"Men's Basketball"]){
-            url = [NSURL URLWithString:@"http://www.jmusports.com/schedule.aspx?path=mbball"];
-        } else if([rowData[@"Name"]  isEqual: @"Women's Basketball"]){
-            url = [NSURL URLWithString:@"http://www.jmusports.com/schedule.aspx?path=wbball"];
-        } else if([rowData[@"Name"]  isEqual: @"Men's Soccer"]){
-            url = [NSURL URLWithString:@"http://www.jmusports.com/schedule.aspx?path=msoc"];
-        } else if([rowData[@"Name"]  isEqual: @"Women's Soccer"]){
-            url = [NSURL URLWithString:@"http://www.jmusports.com/schedule.aspx?path=wsoc"];
-        } else if([rowData[@"Name"]  isEqual: @"Men's Golf"]){
-            url = [NSURL URLWithString:@"http://www.jmusports.com/schedule.aspx?path=mgolf"];
-            check = true;
-        } else if([rowData[@"Name"]  isEqual: @"Women's Golf"]){
-            url = [NSURL URLWithString:@"http://www.jmusports.com/schedule.aspx?path=wgolf"];
-            check = true;
-            
-        } else if([rowData[@"Name"]  isEqual: @"Men's Tennis"]){
-            url = [NSURL URLWithString:@"http://www.jmusports.com/schedule.aspx?path=mten"];
-            check = true;
-            
-        } else if([rowData[@"Name"]  isEqual: @"Women's Tennis"]){
-            url = [NSURL URLWithString:@"http://www.jmusports.com/schedule.aspx?path=wten"];
-            check = true;
-            
-        } else if([rowData[@"Name"]  isEqual: @"Women's Field Hockey"]){
-            url = [NSURL URLWithString:@"http://www.jmusports.com/schedule.aspx?path=fhockey"];
-        } else if([rowData[@"Name"]  isEqual: @"Women's Softball"]){
-            url = [NSURL URLWithString:@"http://www.jmusports.com/schedule.aspx?path=softball"];
-        } else if([rowData[@"Name"]  isEqual: @"Women's Lacrosse"]){
-            url = [NSURL URLWithString:@"http://www.jmusports.com/schedule.aspx?path=wlax"];
-        } else if([rowData[@"Name"]  isEqual: @"Women's Swim + Dive"]){
-            url = [NSURL URLWithString:@"http://www.jmusports.com/schedule.aspx?path=wswim"];
-            check = true;
-            
-        } else if([rowData[@"Name"]  isEqual: @"Women's Cross Country"]){
-            url = [NSURL URLWithString:@"http://www.jmusports.com/schedule.aspx?path=wcross"];
-            check = true;
-            
-        } else if([rowData[@"Name"]  isEqual: @"Women's Track + Field"]){
-            url = [NSURL URLWithString:@"http://www.jmusports.com/schedule.aspx?path=tf"];
-            check = true;
-            
-        } else if([rowData[@"Name"]  isEqual: @"Women's Volleyball"]){
-            url = [NSURL URLWithString:@"http://www.jmusports.com/schedule.aspx?path=wvball"];
-        } else if([rowData[@"Name"]  isEqual: @"Men's Baseball"]){
-            url = [NSURL URLWithString:@"http://www.jmusports.com/schedule.aspx?path=baseball"];
-        }
-        NSString *webdata = [NSString stringWithContentsOfURL:url];
-        //        NSString *html = [url absoluteString];
-        
-        NSArray *body = [webdata componentsSeparatedByString:@"schedule_game schedule_game_"];
-                NSLog(@"%@",body);
-        //getdate
-        for(int i = 1; i < body.count; i++){
-            
-            NSArray *datesplit = [body[i] componentsSeparatedByString:@"schedule_game_opponent_date"];
-            NSString *dateStr = [datesplit[1] substringFromIndex:2];
-            NSArray *date1 = [dateStr componentsSeparatedByString:@"</div>"];
-            //            NSLog(@"%@", date1[0]);
-            NSArray *datewithday = [date1[0] componentsSeparatedByString:@","];
-            NSString *date =  [datewithday[1] stringByTrimmingCharactersInSet:
-                               [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-            if ([date rangeOfString:@"-"].location == NSNotFound) {
-                //                    NSLog(@"string does not contain bla");
-            } else {
-                NSLog(@"string contains bla!");
-                date = [date substringToIndex:date.length - 5];
-            }
-            //getopponent
-            NSArray *oppsplit = [body[i] componentsSeparatedByString:@"schedule_game_opponent_name"];
-            NSString *oppStr = [oppsplit[1] substringFromIndex:2];
-            NSArray *opp1 = [oppStr componentsSeparatedByString:@">"];
-            NSArray *opp2 = [opp1[2] componentsSeparatedByString:@"<"];
-            NSString *opp =  [opp2[0] stringByTrimmingCharactersInSet:
-                              [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-            
-            
-            
-            //
-            //            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-            //            [dateFormat setDateFormat:@"EE, LLL d"];
-            //            NSDate *converteddate = [dateFormat dateFromString:date];
-            //            NSLog(@"%@", converteddate);
-            if ([opp  isEqual: @""]){
-                
-                NSArray *datesplit = [body[i] componentsSeparatedByString:@"schedule_game_opponent_date"];
-                NSString *dateStr = [datesplit[1] substringFromIndex:2];
-                NSArray *date1 = [dateStr componentsSeparatedByString:@"</div>"];
-                NSArray *datewithday = [date1[0] componentsSeparatedByString:@","];
-                NSString *date =  [datewithday[1] stringByTrimmingCharactersInSet:
-                                   [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                
-                if ([date rangeOfString:@"-"].location == NSNotFound) {
-//                    NSLog(@"string does not contain bla");
-                } else {
-                    NSLog(@"string contains bla!");
-                    date = [date substringToIndex:date.length - 5];
-                }
-                
-                //getopponent
-                NSArray *oppsplit = [body[i] componentsSeparatedByString:@"schedule_game_opponent_name"];
-                NSString *oppStr = [oppsplit[1] substringFromIndex:2];
-                //        NSLog(@"%@", oppStr);
-                NSArray *opp1 = [oppStr componentsSeparatedByString:@">"];
-                
-                NSArray *opp2 = [opp1[1] componentsSeparatedByString:@"<"];
-                NSString *opp =  [opp2[0] stringByTrimmingCharactersInSet:
-                                  [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                
-                opp = [NSString stringWithFormat:@"@ %@", opp];
-                //        NSLog(@"%@ %@",date, opp);
-                
-                [fball addObject:@{@"Name": opp, @"Date": date}];
-                
-                
-                
-
-            }else{
-            opp = [NSString stringWithFormat:@"vs. %@", opp];
-            NSLog(@"!!!!!%@ %@",date, opp);
-            [fball addObject:@{@"Name": opp, @"Date": date}];
-            }
-            
-        }
-//        body = [webdata componentsSeparatedByString:@"schedule_game schedule_game_away"];
-//        //        NSLog(@"%@",bodystring);
-//        //getdate
-//        for(int i = 1; i < body.count; i++){
-//            NSArray *datesplit = [body[i] componentsSeparatedByString:@"schedule_game_opponent_date"];
-//            NSString *dateStr = [datesplit[1] substringFromIndex:2];
-//            NSArray *date1 = [dateStr componentsSeparatedByString:@"</div>"];
-//            NSArray *datewithday = [date1[0] componentsSeparatedByString:@","];
-//            NSString *date =  [datewithday[1] stringByTrimmingCharactersInSet:
-//                               [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-//            
-//            //getopponent
-//            NSArray *oppsplit = [body[i] componentsSeparatedByString:@"schedule_game_opponent_name"];
-//            NSString *oppStr = [oppsplit[1] substringFromIndex:2];
-//            //        NSLog(@"%@", oppStr);
-//            NSArray *opp1 = [oppStr componentsSeparatedByString:@">"];
-//            
-//            NSArray *opp2 = [opp1[1] componentsSeparatedByString:@"<"];
-//            NSString *opp =  [opp2[0] stringByTrimmingCharactersInSet:
-//                              [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-//            
-//            opp = [NSString stringWithFormat:@"!!!!!!@ %@", opp];
-//            //        NSLog(@"%@ %@",date, opp);
-//            
-//            [fball addObject:@{@"Name": opp, @"Date": date}];
-//            
-//        }
-    
-//        NSLog(@"%lu", fball.count);
-    
-//    }
-
-    
     
     
     int i = 0;
-     check = false;
+    bool check = false;
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0];
     NSLog(@"%lu", (unsigned long)fball.count);
     NSDateFormatter* myFormatter = [[NSDateFormatter alloc] init];
-    [myFormatter setDateFormat:@"MM dd"];
+    [myFormatter setDateFormat:@"MM/dd/yyyy"];
     NSString *newDate = [myFormatter stringFromDate:date];
     date = [myFormatter dateFromString:newDate];
 //    NSLog(@"%@", fball[i][@"Date"]);
 
     while (i < [fball count]){
         NSDateFormatter* myFormatter = [[NSDateFormatter alloc] init];
-        [myFormatter setDateFormat:@"MM dd"];
+        [myFormatter setDateFormat:@"MM/dd/yyyy"];
         NSDate* myDate = [myFormatter dateFromString:fball[i][@"Date"]];
                 NSLog(@"%@", fball[i][@"Date"]);
 //        mydate.
@@ -212,9 +48,14 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
 
             break;
         }
+        schedindex++;
         i++;
         
         
+    }
+    
+    if(!check){
+        schedindex--;
     }
     
 //    schedindex = 0;
