@@ -359,10 +359,20 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
         else{
             NSString *teamstr =rowData[@"Schedule"][i][@"Name"];
             NSArray *dsplitarray = [teamstr componentsSeparatedByString:@" "];
-            if(dsplitarray.count > 2){
-            row2.numberOfLines = 0;
-            row2.text = [NSString stringWithFormat:@"%@ %@\n      %@", dsplitarray[0], dsplitarray[1], dsplitarray[2]];
-        }
+            if(dsplitarray.count > 3){
+                NSLog(@"%@", dsplitarray[0]);
+                row2.numberOfLines = 0;
+                row2.text = [NSString stringWithFormat:@"%@ %@\n     %@ ...", dsplitarray[0], dsplitarray[1], dsplitarray[2]];
+            }
+            else if(dsplitarray.count == 3){
+                NSLog(@"%@", dsplitarray[0]);
+                row2.numberOfLines = 0;
+                row2.text = [NSString stringWithFormat:@"%@ %@\n     %@", dsplitarray[0], dsplitarray[1], dsplitarray[2]];
+            }
+            else if(dsplitarray.count == 2){
+                row2.numberOfLines = 0;
+                row2.text = [NSString stringWithFormat:@"%@ %@", dsplitarray[0], dsplitarray[1]];
+            }
             else{
                 NSString *teamstr =rowData[@"Schedule"][i][@"Name"];
                 NSArray *dsplitarray = [teamstr componentsSeparatedByString:@" "];
@@ -376,7 +386,7 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
         }
         
         
-        CGRect blocker = CGRectMake(125, 46, 1.5, 85);
+        CGRect blocker = CGRectMake(125, 60, 0.5, 60);
         UILabel* blocklab1 = [[UILabel alloc] initWithFrame:blocker];
         blocklab1.text = @"";
         blocklab1.font = [UIFont systemFontOfSize:20];
@@ -463,7 +473,7 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
                
                 
                 
-                CGRect rowrect2 = CGRectMake(138, 75, 180, 60);
+                CGRect rowrect2 = CGRectMake(133, 75, 180, 60);
                 UILabel* row2 = [[UILabel alloc] initWithFrame:rowrect2];
                 //    NSLog(@"%@",rowData[@"Schedule"][0][@"Name"]);
                if (!check){
@@ -473,9 +483,19 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
                else{
                    NSString *teamstr =rowData[@"Schedule"][i][@"Name"];
                    NSArray *dsplitarray = [teamstr componentsSeparatedByString:@" "];
-                   if(dsplitarray.count > 2){
+                   if(dsplitarray.count > 3){
+                       NSLog(@"%@", dsplitarray[0]);
                        row2.numberOfLines = 0;
-                       row2.text = [NSString stringWithFormat:@"%@ %@\n      %@", dsplitarray[0], dsplitarray[1], dsplitarray[2]];
+                       row2.text = [NSString stringWithFormat:@"%@ %@\n     %@ ...", dsplitarray[0], dsplitarray[1], dsplitarray[2]];
+                   }
+                   else if(dsplitarray.count == 3){
+                       NSLog(@"%@", dsplitarray[0]);
+                       row2.numberOfLines = 0;
+                       row2.text = [NSString stringWithFormat:@"%@ %@\n     %@", dsplitarray[0], dsplitarray[1], dsplitarray[2]];
+                   }
+                   else if(dsplitarray.count == 2){
+                       row2.numberOfLines = 0;
+                       row2.text = [NSString stringWithFormat:@"%@ %@", dsplitarray[0], dsplitarray[1]];
                    }
                    else{
                        NSString *teamstr =rowData[@"Schedule"][i][@"Name"];
@@ -491,7 +511,7 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
                    
                }
                
-                CGRect blocker = CGRectMake(250, 46, 1.5, 85);
+                CGRect blocker = CGRectMake(250, 60, 0.5, 60);
                 UILabel* blocklab1 = [[UILabel alloc] initWithFrame:blocker];
                 blocklab1.text = @"";
                 blocklab1.font = [UIFont systemFontOfSize:20];
@@ -590,9 +610,19 @@ static NSString *CellIdentifier = @"CellTableIdentifier";
                else{
                    NSString *teamstr =rowData[@"Schedule"][i][@"Name"];
                    NSArray *dsplitarray = [teamstr componentsSeparatedByString:@" "];
-                   if(dsplitarray.count > 2){
+                   if(dsplitarray.count > 3){
+                       NSLog(@"%@", dsplitarray[0]);
                        row2.numberOfLines = 0;
-                       row2.text = [NSString stringWithFormat:@"%@ %@\n      %@", dsplitarray[0], dsplitarray[1], dsplitarray[2]];
+                       row2.text = [NSString stringWithFormat:@"%@ %@\n     %@ ...", dsplitarray[0], dsplitarray[1], dsplitarray[2]];
+                   }
+                   else if(dsplitarray.count == 3){
+                       NSLog(@"%@", dsplitarray[0]);
+                       row2.numberOfLines = 0;
+                       row2.text = [NSString stringWithFormat:@"%@ %@\n     %@", dsplitarray[0], dsplitarray[1], dsplitarray[2]];
+                   }
+                   else if(dsplitarray.count == 2){
+                       row2.numberOfLines = 0;
+                       row2.text = [NSString stringWithFormat:@"%@ %@", dsplitarray[0], dsplitarray[1]];
                    }
                    else{
                        NSString *teamstr =rowData[@"Schedule"][i][@"Name"];
